@@ -4,3 +4,139 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
+*body {
+    padding: 0;
+    margin: 0;
+
+}
+
+/* 
+@layer components{
+
+
+    .form-container     
+    {
+        
+        @apply grid col-span-1 justify-items-center
+    }
+} */
+
+@layer components {
+
+    .form-container     
+    {
+        
+        @apply grid justify-items-center
+    }
+
+    /* .account-box {
+        @apply pl-[5rem] mt-[5rem]
+    } */
+
+
+    .account-heading {
+        @apply mt-10
+    }
+
+    .form {
+        @apply mt-10
+    }
+
+
+    .input-box {
+        @apply border-2 border-black w-full p-2.5
+    }
+
+    .text-btn {
+        @apply border-2 border-black w-full p-2.5 text-center mt-5 bg-[#333333] text-white
+    }
+
+    
+
+     /* .login-list{
+        @apply flex 
+      } */
+
+    /* .login-list li
+    {
+        @apply pl-3 
+    } */
+
+
+    .get-started-btn{
+        @apply border-2 p-3 mt-3 rounded-md  bg-[#f5f1e7] 
+    }
+    
+    
+    /* .main-section{
+    @apply bg-[#f5f1e7] mr-[20%] ml-[20%] rounded-md height-30%
+
+        } */
+        /* .receipe-images-home{
+        @apply 
+        }
+     */
+        
+     .flex-header{
+        @apply flex gap-2
+     }
+
+
+     .features-container {
+        @apply flex flex-col items-center w-[100%]; /* Align items vertically */
+      }
+      
+      .features-image {
+        @apply rounded-md;
+      }
+      
+      .receipe-images-home {
+        @apply flex justify-center mt-[2%];
+      }
+
+
+      .border-left{
+       @apply border-l-2 pl-3
+      }
+      .small-text
+      {
+        @apply text-sm
+      }
+
+      .btn-header{
+        @apply  border border-gray-300 rounded-[.3rem] p-1
+      }
+
+      .app-recipie-heading{
+        @apply bg-[#f5f1e7] h-[15vh]
+      }
+
+    .seach-input{
+        @apply p-3 border border-gray-300 rounded-md w-[50%] placeholder:text-gray-500
+    }
+
+    .recepie-btn{
+        @apply p-1 border border-gray-300 rounded-md mt-3 bg-[white] text-red-500 font-semibold
+    }
+
+    .label-form{
+        @apply block mb-2 text-sm font-medium text-gray-900
+    }    
+
+    .input-recepie-form{
+        @apply p-1 border border-gray-400 rounded-md m-2 ml-0
+    }
+    .textarea-recepie-form{
+        @apply block m-2 p-2.5 h-[15%] ml-0 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 w-[60%]
+    }
+    
+    /* .div-center{
+        @apply 
+    } */
+    
+
+  
+}

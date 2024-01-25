@@ -1,9 +1,12 @@
 import React from 'react'
-import Signup from './signup'
+
+import Singin from './singin'
+
 const page = () => {
   return (
-    <div className='w-[100%]'>
-        <Signup />
+    <div>
+      <Singin />
+      
     </div>
   )
 }

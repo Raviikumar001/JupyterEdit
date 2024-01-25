@@ -1,12 +1,15 @@
 "use client"
 
 import React from 'react'
-
+import SignupForm from '@/app/_components/signup/_signupForm'
 const Signup = () => {
   return (
-    <div className='font-Ubuntu'>
+    <div className='form-container w-full'>
+      <h3 className='font-semibold text-2xl text-red-800 mt-10 text-left'>Scrible Edit</h3>
+      <p className='text-xl mt-3'>Sign Up</p>
+      <SignupForm />
 
-        <h2>hh</h2>
+
     </div>
   )
 }
