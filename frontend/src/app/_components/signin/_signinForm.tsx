@@ -7,10 +7,9 @@ import { MessageInfo } from '../_HelperFunctions';
 
 const SignInForm = () => {
 
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('')
+    // const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState<string>('');
 
 
@@ -20,30 +19,28 @@ const SignInForm = () => {
 
         try {
             e.preventDefault();
-            if (!(name && email && password && confirmPassword)) {
+            if (!( email && password )) {
                 setMessage('Fields are Empty')
                 return;
-            }else if(password !== confirmPassword)
-            {
-                setMessage('Passwords do not Match');
-                return;
             }
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/register`, {
-                name,
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`, {
+             
                 email,
                 password
     
             });
     
-            // console.log(response, "resonse")
+            console.log(response, "resonse")
             if (response.data) {
-                setMessage(response.data.message)
+                localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            setMessage(response.data.message)
             }
             
         }
         catch (error: unknown) {
             const err = error as AxiosError<{ message: string }>;
-            if (err.response?.status === 409) {
+            if (err.response?.status === 401) {
               setMessage(err.response.data.message);
             }
           }
@@ -53,6 +50,16 @@ const SignInForm = () => {
 
     }
     
+    useEffect(() => {
+        if (message) {
+          setTimeout(() => {
+            setMessage("")
+            if(message == 'User Authenticated'){
+              return navigate.push('/app')
+            }
+          }, 1000);
+        }
+      }, [message]);
         
 
 

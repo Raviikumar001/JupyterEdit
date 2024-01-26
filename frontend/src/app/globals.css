@@ -13,16 +13,6 @@
 
 }
 
-/* 
-@layer components{
-
-
-    .form-container     
-    {
-        
-        @apply grid col-span-1 justify-items-center
-    }
-} */
 
 @layer components {
 
@@ -54,7 +44,18 @@
         @apply border-2 border-black w-full p-2.5 text-center mt-5 bg-[#333333] text-white
     }
 
+    .signup-btn{
+        @apply border-2 bg-[#3147ff] p-2 rounded-md text-white font-semibold
+    }
     
+    .hero-text{
+        @apply text-center mt-[10%]
+    }
+
+    .border-text{
+
+        @apply border-2 bg-[#00ffff] p-8 h-[20%] 
+    }
 
      /* .login-list{
         @apply flex 
@@ -140,3 +141,7 @@
 
   
 }
+/* 
+.div-center{
+   margin: 0 auto;
+} */
