@@ -4,7 +4,7 @@ const cors = require('cors');
 const {connectDb} = require('./db/connect')
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-routes')
-
+const documentrRoutes = require('./routes/document-routes');
 require('dotenv').config();
 
 //auth files
@@ -23,6 +23,9 @@ app.use(cors({
 }));
 
 app.use('/v1/auth', authRoutes);
+app.use('/v1/api', documentrRoutes);
+
+
 
 
 app.get('/v1', (req,res)=> {
