@@ -22,17 +22,23 @@ const MainApp = () => {
   const { user, token } = userContext || { user: null, token: null };
 
   let navigate = useRouter();
+  
+  useEffect(()=> {
 
- 
+  },[user])
   return (
     <div className='h-full'>
     
      
-     <>
-      <AppHeader user={user} />
+    {user&&
+    <>
+
+    
+    <AppHeader user={user} />
       <CreateDocument user={user} />
       <RecentDocuments user={user} />
-     </>
+     </>}
+    
 
       
     </div>
