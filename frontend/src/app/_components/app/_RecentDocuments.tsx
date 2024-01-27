@@ -61,7 +61,7 @@ const RecentDocuments : React.FC<Props>  = ({user}) => {
   
       if (response.status === 200) {
         let updatedArray = document.filter((item) => item._id !== id);
-        setDocument(updatedArray.reverse());
+        setDocument(updatedArray);
       }
     } catch (error) {
       console.log(error);
