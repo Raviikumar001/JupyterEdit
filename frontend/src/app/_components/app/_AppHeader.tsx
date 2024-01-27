@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import GoogleDocs, { UserAccount } from '../svgFiles';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 interface User {
   name: string;
   email: string;
@@ -17,6 +18,17 @@ interface Props {
 
 const AppHeader: React.FC<Props> = ({ user }) => {
 
+  let navigate = useRouter();
+
+  function logout()
+  {  
+  localStorage.removeItem('user')
+  localStorage.removeItem('token')
+  setTimeout(()=>{
+    return navigate.push('/')
+  },1200)
+
+  }
   return (
     <div className='flex items-center justify-between pl-20 pt-3 pr-20'>
 
@@ -32,7 +44,7 @@ const AppHeader: React.FC<Props> = ({ user }) => {
             <h2>{user.name}</h2>
           </div>
         )}
-        <h2 className='block text-center signup-btn   flex-shrink-0'><Link href='/accounts/signup'>Logout</Link></h2>
+        <h2 onClick={logout} className='block text-center signup-btn   flex-shrink-0'><Link href='/accounts/signup'>Logout</Link></h2>
       </div>
 
 

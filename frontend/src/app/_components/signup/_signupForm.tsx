@@ -39,6 +39,8 @@ const SignupForm = () => {
     
             console.log(response, "resonse")
             if (response.data) {
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('user', JSON.stringify(response.data.user));
                 setMessage(response.data.message)
             }
             
@@ -57,7 +59,16 @@ const SignupForm = () => {
     }
     
         
-
+    useEffect(() => {
+        if (message) {
+          setTimeout(() => {
+            setMessage("")
+            if(message == 'User Created'){
+              return navigate.push('/app')
+            }
+          }, 1000);
+        }
+      }, [message]);
 
 
 
