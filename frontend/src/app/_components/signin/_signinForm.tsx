@@ -66,8 +66,8 @@ const SignInForm = () => {
 
       const setCredentials = ()=>
       {
-        setEmail("dd");
-        setPassword('jlkjlk')
+        setEmail("example@gmail.com");
+        setPassword('qwerty12345')
 
       }
 
