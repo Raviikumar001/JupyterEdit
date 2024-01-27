@@ -41,8 +41,9 @@ const RecentDocuments : React.FC<Props>  = ({user}) => {
           console.log(response);
 
         if(response.data)
-        {
-          setDocument(response.data.documents);
+        { 
+          let array = response.data.documents.reverse()
+          setDocument(array);
         }
       } catch (error) {
           console.log(error);
@@ -60,7 +61,7 @@ const RecentDocuments : React.FC<Props>  = ({user}) => {
   
       if (response.status === 200) {
         let updatedArray = document.filter((item) => item._id !== id);
-        setDocument(updatedArray);
+        setDocument(updatedArray.reverse());
       }
     } catch (error) {
       console.log(error);
