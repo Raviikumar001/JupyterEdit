@@ -138,7 +138,26 @@
         @apply 
     } */
     
+    .create-doc-div{
 
+        @apply  bg-[#f1f3f4] h-[15rem] mt-3     
+    }   
+
+    /* .document-layout{
+        @apply h-[10rem] w-[10rem] border border-gray-200 rounded-md bg-white text-center mt-3 flex justify-center items-center  hover:border-blue-300
+    }
+    .document-detail{
+        @apply border border-gray-200
+    } */
+
+    .document-layout {
+        @apply relative h-[13rem] w-[10rem] border border-gray-200 rounded-md bg-white text-center mt-3 flex justify-center items-center hover:border-blue-300;
+      }
+      
+      .document-content {
+        @apply absolute bottom-0 left-0 right-0 px-4 pb-4 text-center border-t border-gray-200;
+      }
+      
   
 }
 /* 

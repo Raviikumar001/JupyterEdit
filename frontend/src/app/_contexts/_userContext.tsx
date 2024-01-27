@@ -2,7 +2,7 @@
 import React, { createContext, useState, useEffect, useContext, Dispatch, SetStateAction } from 'react';
 
 // Define types for the user object and the context
-type User = {
+export type User = {
     name: string;
     email: string;
     registrationDate: string;
