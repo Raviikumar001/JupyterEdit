@@ -7,6 +7,7 @@ const DocumentSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: User, 
       },
+      
       documentId:{
         type:String,
         required:true,
