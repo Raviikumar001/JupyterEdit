@@ -64,7 +64,12 @@ const SignInForm = () => {
 
 
 
+      const setCredentials = ()=>
+      {
+        setEmail("dd");
+        setPassword('jlkjlk')
 
+      }
 
 
   return (
@@ -89,7 +94,9 @@ const SignInForm = () => {
 
                 <label htmlFor='password' className='lablel-text' >Password  </label><br />
                
-
+                <p onClick={setCredentials}className='text-blue-600'>
+                  Dummy Login Credetials
+                </p>
                 <button type='submit' className='text-btn' >SIGN IN</button>
                 
                 

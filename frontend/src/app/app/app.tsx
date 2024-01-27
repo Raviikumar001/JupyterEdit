@@ -26,14 +26,14 @@ const MainApp = () => {
  
   return (
     <div className='h-full'>
-     {user&&
+    
      
      <>
       <AppHeader user={user} />
       <CreateDocument user={user} />
       <RecentDocuments user={user} />
      </>
-  }
+
       
     </div>
   )
