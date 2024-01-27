@@ -1,0 +1,5 @@
+MONGODB_STRING = mongodb://127.0.0.1:27017/
+
+PORT = 5000
+
+SECRET_KEY= iKyc9hU9wmKdddddYyA==
