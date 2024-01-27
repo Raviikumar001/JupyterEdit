@@ -20,7 +20,7 @@ const createDocument =async(req,res,next)=> {
     await newDocument.save();
     console.log('document created Successfully');
 
-    res.status(200).json({newDocument, message:"Document created Successfully"})
+    res.status(200).json({document:newDocument, message:"Document created Successfully"})
 
  } catch (error) {
     console.error('Error creating Document:', error);
@@ -33,7 +33,50 @@ const createDocument =async(req,res,next)=> {
 }
 
 
+const getDocuments =async (req,res, next)=> {
 
-module.expore ={
-    createDocument
+    try {
+
+        console.log(req.query.id)
+        const documents = await Document.find({creator:req.query.id})
+        
+        return res.status(200).json({documents, message:"Documents fetched successfully"});
+
+        
+    } catch (error) {
+        console.error('Error creating Document:', error);
+        res.status(500).json({ error: "Internal Server Error, Couldn't fetch Documents" });
+    }
+
+
+
+}
+
+
+const deleteDocuments = async(req,res,next)=>
+{   
+
+    try {
+        const id = req.query.id;
+        const result = await Document.deleteOne({ _id: id });
+        console.log(result);
+      
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: "Document not found" });
+        }
+        
+        res.status(200).json({ message: "Successfully removed Document" });
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message:"Failed to Delete Document."})
+    }
+}
+
+
+module.exports ={
+    createDocument,
+    getDocuments,
+    deleteDocuments
+
 }
