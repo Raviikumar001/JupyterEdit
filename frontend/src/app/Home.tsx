@@ -1,7 +1,9 @@
 import React from "react";
 import GoogleDocs from "./_components/svgFiles";
 import Link from "next/link";
+import { createDecipheriv } from "crypto";
 const Home = () => {
+  
   return (
     <div className="h-[100%]">
       <div className="flex justify-evenly mt-5">
@@ -18,7 +20,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 sm:grid-cols-1 p-3 gap-3 ">
+      <div className="flex flex-col items-center">
         <div className="flex justify-center items-center h-full mt-[10%] flex-col">
           <div className="text-center">
             <h2 className="text-3xl font-semibold">
@@ -38,7 +40,9 @@ const Home = () => {
 
         <div className="sm: mt-3">
           <img src="/docs2.png" alt="docs"
-          className="shadow rounded-lg "
+          className="shadow rounded-lg mb-5 "
+
+
            
           />
         </div>
@@ -50,3 +54,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

@@ -4,19 +4,20 @@ import axios, { AxiosError } from 'axios';
 import React,{useState,useEffect} from 'react'
 import { useRouter } from 'next/navigation';
 import { MessageInfo } from '../_HelperFunctions';
-
+import LoadingComponent from '../signup/_LoadingComponent';
 const SignInForm = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(false);
 
 
     let navigate = useRouter();
 
     async function onSubmitForm(e: React.FormEvent<HTMLFormElement>) {
-
+      setIsLoading(true);
         try {
             e.preventDefault();
             if (!( email && password )) {
@@ -32,6 +33,7 @@ const SignInForm = () => {
     
             console.log(response, "resonse")
             if (response.data) {
+              setIsLoading(false);
                 localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
             setMessage(response.data.message)
@@ -41,6 +43,7 @@ const SignInForm = () => {
         catch (error: unknown) {
             const err = error as AxiosError<{ message: string }>;
             if (err.response?.status === 401) {
+              setIsLoading(false);
               setMessage(err.response.data.message);
             }
           }
@@ -97,11 +100,11 @@ const SignInForm = () => {
                 <p onClick={setCredentials}className='text-blue-600'>
                   Dummy Login Credetials
                 </p>
+                {isLoading && <LoadingComponent message='Authenticating' />}
                 <button type='submit' className='text-btn' >SIGN IN</button>
                 
                 
                 
-
 
 
 

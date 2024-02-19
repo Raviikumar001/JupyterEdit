@@ -44,7 +44,7 @@ const AppHeader: React.FC<Props> = ({ user }) => {
             <h2>{user.name}</h2>
           </div>
         )}
-        <h2 onClick={logout} className='block text-center signup-btn   flex-shrink-0'><Link href='/accounts/signup'>Logout</Link></h2>
+        <h2 onClick={logout} className='block text-center signup-btn cursor-pointer flex-shrink-0'>Logout</h2>
       </div>
 
 

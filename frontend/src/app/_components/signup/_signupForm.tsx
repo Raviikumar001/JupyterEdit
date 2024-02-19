@@ -4,6 +4,7 @@ import axios, { AxiosError } from 'axios';
 import React,{useState,useEffect} from 'react'
 import { useRouter } from 'next/navigation';
 import { MessageInfo } from '../_HelperFunctions';
+import LoadingComponent from './_LoadingComponent';
 
 const SignupForm = () => {
 
@@ -12,12 +13,13 @@ const SignupForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(false);
 
 
     let navigate = useRouter();
 
     async function onSubmitForm(e: React.FormEvent<HTMLFormElement>) {
-
+        setIsLoading(true);
         try {
             
             e.preventDefault();
@@ -39,6 +41,7 @@ const SignupForm = () => {
     
             console.log(response, "resonse")
             if (response.data) {
+                setIsLoading(false);
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 setMessage(response.data.message)
@@ -49,6 +52,7 @@ const SignupForm = () => {
             console.log(error);
             const err = error as AxiosError<{ message: string }>;
             if (err.response?.status === 409) {
+                setIsLoading(false);
               setMessage(err.response.data.message);
             }
           }
@@ -69,17 +73,19 @@ const SignupForm = () => {
           }, 1000);
         }
       }, [message]);
-
-
-
-
-
-  return (
-    <div className='md:w-[20%] sm:w-[100%]'>
+      
+      
+      
+      
+      
+      return (
+          <div className='md:w-[20%] sm:w-[100%]'>
 
 
             <form className='form' onSubmit={onSubmitForm} >
                 <MessageInfo message={message} />
+           
+                
                 <label htmlFor='email' className='lablel-text' >Name</label><br />
                 <input name='name' value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -103,18 +109,15 @@ const SignupForm = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     name='password' placeholder='Confirm Password' className='input-box' /><br />
 
+
+    {isLoading && <LoadingComponent message='Creating User...' />}
                 <button type='submit' className='text-btn' >SIGN UP</button>
                 
                 
-                
-
-
-
-
-
-
+        
 
             </form>
+
             <p className='mt-3 mb-10'>Already have an account? {" "}
                 <Link href="/accounts/signin" className='font-semibold'>
                     Sign In</Link>
