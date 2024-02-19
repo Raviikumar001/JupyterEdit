@@ -19,7 +19,6 @@ const SignupForm = () => {
     let navigate = useRouter();
 
     async function onSubmitForm(e: React.FormEvent<HTMLFormElement>) {
-        setIsLoading(true);
         try {
             
             e.preventDefault();
@@ -31,7 +30,8 @@ const SignupForm = () => {
                 setMessage('Passwords do not Match');
                 return;
             }
-
+            
+            setIsLoading(true);
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/register`, {
                 name,
                 email,

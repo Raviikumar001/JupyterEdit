@@ -17,14 +17,14 @@ const SignInForm = () => {
     let navigate = useRouter();
 
     async function onSubmitForm(e: React.FormEvent<HTMLFormElement>) {
-      setIsLoading(true);
-        try {
-            e.preventDefault();
-            if (!( email && password )) {
-                setMessage('Fields are Empty')
-                return;
-            }
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`, {
+      try {
+        e.preventDefault();
+        if (!( email && password )) {
+          setMessage('Fields are Empty')
+          return;
+        }
+        setIsLoading(true);
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`, {
              
                 email,
                 password
